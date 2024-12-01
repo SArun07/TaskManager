@@ -1,0 +1,7 @@
+1. agar maine  "npm install react-router-dom" ka use kiya or wo kam nhi kiya to "npm uninstall react-router-dom" isko uninstall karke ye install karna hai kyoki switch is version me kam nhi karta hai so install "npm install react-router-dom@5.2.0" or hamara kam ho jayega
+2. Agar react router refresh nhi ho rha hai to forcefully refresh karenge using this command "<Router forceRefresh={true}>" or hamara kam ho gayega
+3. Use fontawsome acche icons ke liye
+
+4. My task 
+  1. Mast About Page
+  2. User Account jisme user ki details dikhe
