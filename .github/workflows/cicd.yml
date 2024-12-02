@@ -1,0 +1,30 @@
+name: Deploy Node Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Soruce
+        uses: actions/checkout@v4
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker Image
+        run: docker build -t arun0789/taskmanager --build-arg host='${{ secrets.HOST }}'.
+      - name: Publish Image to docker hub
+        run: docker push arun0789/taskmanager:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull arun0789/taskmanager:latest
+      - name: Delete old container
+        run: docker rm -f taskmanager-container
+      - name: Run Docker Container
+        run: docker run -d -p 3000:80 --name taskmanager-container arun0789/taskmanager
