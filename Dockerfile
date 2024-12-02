@@ -1,10 +1,10 @@
 FROM node:alpine3.18 as build
 
 # Declare build time envoirment variable
-ARG host
+ARG REACT_APP_BASE_URL
 
 # Set default values for envoirment variable
-ENV host=NEW_HOST
+ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
 
 # Build app
 WORKDIR /app
