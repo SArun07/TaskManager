@@ -4,7 +4,7 @@ FROM node:alpine3.18 as build
 ARG host
 
 # Set default values for envoirment variable
-ENV host=HOST
+# ENV host=HOST
 
 # Build app
 WORKDIR /app
